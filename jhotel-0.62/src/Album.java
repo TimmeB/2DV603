@@ -24,18 +24,16 @@ import java.io.*;
 import java.util.*;
 
 
-public class Album extends Thread {
+public class Album {
 	
-	private AlbumWindow aw;
 	private ArrayList album = new ArrayList();
 	private long entries = 0;
 	
-	public Album(AlbumWindow aw) {
-		this.aw = aw;
+	public Album() {
 	}
 
 	public void run() {
-		aw.setThreadRunning();
+//		aw.setThreadRunning();
 		
 		try {
 			FileInputStream fis = new FileInputStream("./db/album.jh");
@@ -53,12 +51,12 @@ public class Album extends Thread {
 			System.out.println(cnf);
 		}
 		
-		aw.setThreadEnded(entries);
+//		aw.setThreadEnded(entries);
 	}
 	
 	public void saveAlbum(ArrayList newEntries) {
 		
-		aw.setThreadRunning();
+//		aw.setThreadRunning();
 		
 		
 		for (int i=0; i<newEntries.size(); ++i) {
@@ -76,7 +74,11 @@ public class Album extends Thread {
 			System.out.println(io);
 		}
 		
-		aw.dispose();
+//		aw.dispose();
 		
+	}
+
+	public long getEntries() {
+		return entries;
 	}
 }

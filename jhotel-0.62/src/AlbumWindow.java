@@ -124,8 +124,10 @@ public class AlbumWindow extends Frame implements AlbumObserver {
 				dispose();
 			}
 		});
-		Album album = new Album(thisWindow);
-		album.start();
+		Album album = new Album();
+		setThreadRunning();
+		album.run();
+		setThreadEnded(album.getEntries());
 		this.album = album;
 		
 	}
@@ -545,8 +547,10 @@ public class AlbumWindow extends Frame implements AlbumObserver {
 			jButton1.setBounds(26, 520, 119, 24);
 			jButton1.setText("Save");
 			jButton1.addActionListener(new java.awt.event.ActionListener() { 
-				public void actionPerformed(java.awt.event.ActionEvent e) {    
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					setThreadRunning();
 					album.saveAlbum(newEntries);
+					dispose();
 				}
 			});
 		}
