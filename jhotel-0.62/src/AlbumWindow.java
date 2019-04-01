@@ -19,11 +19,13 @@
  *
  *
  *  */
+import observers.AlbumObserver;
+
 import java.util.*;
 
 import java.awt.Frame;
 
-public class AlbumWindow extends Frame implements ObserverTest{
+public class AlbumWindow extends Frame implements AlbumObserver {
 
 	private javax.swing.JLabel jLabel = null;
 	private javax.swing.JLabel jLabel1 = null;
@@ -65,10 +67,11 @@ public class AlbumWindow extends Frame implements ObserverTest{
 	
 	private javax.swing.JButton jButton2 = null;
 	private javax.swing.JButton jButton3 = null;
-	private AlbumSearchWindow asw = null;
+	private AlbumSearchWindow asw;
 
 	public AlbumWindow() {
 		this.thisWindow = this;
+		asw = new AlbumSearchWindow();
 		asw.addObserver(this);
 
 		initialize();
@@ -607,7 +610,7 @@ public class AlbumWindow extends Frame implements ObserverTest{
 			jButton2.addActionListener(new java.awt.event.ActionListener() { 
 				public void actionPerformed(java.awt.event.ActionEvent e) {    
 //					AlbumSearchWindow asw = new AlbumSearchWindow(thisWindow);
-					asw = new AlbumSearchWindow(thisWindow);			//TODO: Edited
+					asw = new AlbumSearchWindow();			//TODO: Edited
 
 					asw.setVisible(true);
 				}

@@ -21,6 +21,8 @@
 **/
 
 
+import observers.AlbumObserver;
+
 import java.awt.Frame;
 import java.awt.HeadlessException;
 import java.awt.event.*;
@@ -35,10 +37,10 @@ public class AlbumSearchWindow extends Frame {
 	private javax.swing.JLabel jLabel2 = null;
 	private javax.swing.JButton jButton1 = null;
 	private javax.swing.JButton jButton3 = null;
-	public AlbumWindow aw;
+//	public AlbumWindow aw;  //TODO: remove line
 	private javax.swing.JScrollPane jScrollPane = null;
 	private javax.swing.JList jList = null;
-	private ArrayList<ObserverTest> observers = new ArrayList<>();		//TODO: Added
+	private ArrayList<AlbumObserver> observers = new ArrayList<>();		//TODO: Added
 	ArrayList data = new ArrayList();
 	ArrayList db = new ArrayList();
 	ArrayList sr = new ArrayList();
@@ -46,8 +48,8 @@ public class AlbumSearchWindow extends Frame {
 	String dbname;
 	int entries;
 	
-	public AlbumSearchWindow(AlbumWindow aw) throws HeadlessException {
-		this.aw = aw;
+	public AlbumSearchWindow(/*AlbumWindow aw*/) throws HeadlessException { //TODO: remove argument
+//		this.aw = aw;		//TODO: remove line
 		Language lang = new Language();
 		language = lang.getLanguage();
 		Options options = new Options();
@@ -56,11 +58,11 @@ public class AlbumSearchWindow extends Frame {
 		initialize();
 	}
 
-	public void addObserver(ObserverTest observer){
+	public void addObserver(AlbumObserver observer){
 		observers.add(observer);
 	}
-	public void notifySomethingHappened(String[] s){
-		for (ObserverTest observer : observers){
+	public void notifyUpdateASW(String[] s){
+		for (AlbumObserver observer : observers){
 			observer.updateASW(s);
 		}
 	}
@@ -83,7 +85,7 @@ public class AlbumSearchWindow extends Frame {
 				jList.setModel(new DefaultListModel());
 				clearFields();
 				setVisible(false);
-				aw.setEnabled(true);
+//				aw.setEnabled(true);
         	}
         });
 			
@@ -230,7 +232,7 @@ public class AlbumSearchWindow extends Frame {
 					jList.setModel(new DefaultListModel());
 					clearFields();
 					setVisible(false);
-					aw.setEnabled(true);
+//					aw.setEnabled(true);
 					
 
 				}
@@ -277,7 +279,7 @@ public class AlbumSearchWindow extends Frame {
 		entry = guest.getGuest((String[]) sr.get(index));
 					
 //		aw.setGuest(entry);
-		notifySomethingHappened(entry);		//TODO: Edited
+		notifyUpdateASW(entry);		//TODO: Edited
 		clearFields();
 		setVisible(false);
 
