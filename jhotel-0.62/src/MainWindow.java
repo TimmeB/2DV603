@@ -910,7 +910,19 @@ public class MainWindow extends Frame implements ActionListener, MainObserver, R
 	
 	public void actionPerformed(ActionEvent event) {
 		String command = event.getActionCommand();
-		ActionCommandsMW action = new ActionCommandsMW(thisWindow, command);		
+		if (command.equals(language[0])) {
+			newGuest();
+		}
+		else if (command.equals(language[1])) {
+			searchGuest();
+		}
+		else if (command.equals(language[2])) {
+			saveGuest();
+		}
+		else {
+			ActionCommandsMW action = new ActionCommandsMW(command);
+		}
+
 	}
 	
 	
@@ -1024,6 +1036,7 @@ public class MainWindow extends Frame implements ActionListener, MainObserver, R
 		setGuest(tmpGuest);
 	}
 
+	@Override
 	public void updateYesNoDialog(String[] currentGuest, String language, String action){
 		YesNoDialog zn = new YesNoDialog(thisWindow, currentGuest, language, "undoAddEntry");
 		zn.setVisible(true);

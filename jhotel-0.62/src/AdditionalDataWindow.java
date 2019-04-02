@@ -730,6 +730,8 @@ public class AdditionalDataWindow extends Frame {
 		}
 	}
 	private void notifyYesNoDialog(String[] currentGuest, String language, String action){
-
+		for (MainObserver observer : observers){
+			observer.updateYesNoDialog(currentGuest, language, action);
+		}
 	}
 }  //  @jve:visual-info  decl-index=0 visual-constraint="10,10"
