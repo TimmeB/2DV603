@@ -21,6 +21,9 @@
 **/
 
 
+import observers.Observable;
+import observers.ReservationMngObserver;
+
 import java.awt.Frame;
 import javax.swing.table.*;
 import java.util.*;
@@ -47,12 +50,16 @@ public class ReservationManagement extends Frame implements Runnable {
 	private javax.swing.JTextField jTextField3 = null;
 	private javax.swing.JButton jButton3 = null;
 	private javax.swing.JButton jButton4 = null;
-	private MainWindow mw;
 	private Reservation res;
 	public static ReservationManagement thisWindow;
 	private ReservationManagement rm;
 	private int roomtype;
 	private String room;
+
+	private ArrayList<ReservationMngObserver> observers = new ArrayList<>();
+	private final int ACT_GOTO_MAIN = 1;
+	private final int ACT_SET_VISIBLE = 2;
+
 	String selectedRoom;
 	String[] oldguest;
 	String[] currentGuest;
@@ -83,14 +90,12 @@ public class ReservationManagement extends Frame implements Runnable {
 	/**
 	 * This is the default constructor
 	 */
-	public ReservationManagement(MainWindow mw) {
+	public ReservationManagement() {
 		Options options = new Options();
 		settings = options.getSettings();
 		Reservation r = new Reservation(thisWindow);
 		this.res = r;
 		thisWindow = this;
-		this.mw = mw;
-		mw.setVisible(false);
 		Language lang = new Language();
 		language = lang.getLanguage();
 		int[] days = res.calcDate();
@@ -132,9 +137,8 @@ public class ReservationManagement extends Frame implements Runnable {
 		this.setTitle("Reservation Management");
 		this.setVisible(true);
 		this.addWindowListener(new java.awt.event.WindowAdapter() { 
-			public void windowClosing(java.awt.event.WindowEvent e) {    
-				mw.setVisible(true);
-				mw.setEnabled(true);
+			public void windowClosing(java.awt.event.WindowEvent e) {
+				notifyObserver(ACT_GOTO_MAIN, true);
 				dispose();
 			}
 		});
@@ -1056,5 +1060,22 @@ public class ReservationManagement extends Frame implements Runnable {
 			jLabel8.setText("");
 		}
 		return jLabel8;
+	}
+
+
+	public void addObserver(Object o){
+		observers.add((ReservationMngObserver) o);
+	}
+
+
+	public void notifyObserver(int action, boolean b) {
+		for (ReservationMngObserver observer : observers){
+			switch(action){
+				case ACT_GOTO_MAIN:
+					observer.updateMainWindow(b);
+					break;
+
+			}
+		}
 	}
 }  //  @jve:visual-info  decl-index=0 visual-constraint="10,10"

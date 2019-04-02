@@ -2884,7 +2884,7 @@ public class OptionsWindow extends Frame{
 			for (int i=1; i<=Integer.parseInt(settings[2]); ++i) {
 				rt.createRoomFiles(rt.getRooms(i));
 			}*/
-			ReservationManagement rm = new ReservationManagement(mw);
+			ReservationManagement rm = new ReservationManagement();
 			rm.setVisible(false);
 			Reservation res = new Reservation(rm);
 			res.createResTable();

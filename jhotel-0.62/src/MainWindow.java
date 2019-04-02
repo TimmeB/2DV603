@@ -22,13 +22,14 @@
 
 
 import observers.MainObserver;
+import observers.ReservationMngObserver;
 
 import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.*;
 
-public class MainWindow extends Frame implements ActionListener, MainObserver {
+public class MainWindow extends Frame implements ActionListener, MainObserver, ReservationMngObserver {
 
 	private javax.swing.JLabel jLabel = null;
 	private javax.swing.JButton jButton = null;
@@ -283,7 +284,8 @@ public class MainWindow extends Frame implements ActionListener, MainObserver {
 				public void actionPerformed(java.awt.event.ActionEvent e) {    
 					//setGuestStatus(false);
 					//jButton6.setVisible(false);
-					ReservationManagement rm = new ReservationManagement(thisWindow);
+					ReservationManagement rm = new ReservationManagement();
+					rm.addObserver(thisWindow);
 					rm.setVisible(true);
 					new Thread(rm).start();
 					rm.setEnabled(true);
@@ -996,4 +998,11 @@ public class MainWindow extends Frame implements ActionListener, MainObserver {
 	public void updateSetEnable(boolean b){
 		thisWindow.setEnabled(b);
 	}
+
+	@Override
+	public void updateMainWindow(boolean b) {
+		setEnabled(b);
+		setVisible(b);
+	}
+
 }  //  @jve:visual-info  decl-index=0 visual-constraint="22,10"
