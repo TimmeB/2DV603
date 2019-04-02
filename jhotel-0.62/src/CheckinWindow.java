@@ -42,7 +42,7 @@ public class CheckinWindow extends Frame {
 	DefaultListModel dlm_checkin = new DefaultListModel();
 	DefaultListModel dlm_checkout = new DefaultListModel();
 	CheckinWindow thisWindow;
-	MainWindow mw;
+//	MainWindow mw;
 	ReservationManagement rm;
 	ArrayList al;
 
@@ -54,9 +54,9 @@ public class CheckinWindow extends Frame {
 	/**
 	 * This is the default constructor
 	 */
-	public CheckinWindow(MainWindow mw) { //, ReservationManagement rm) {
+	public CheckinWindow(/*MainWindow mw*/) { //, ReservationManagement rm) {
 		this.thisWindow = this;
-		this.mw = mw;
+//		this.mw = mw;
 		Language lang = new Language();
 		language = lang.getLanguage();
 
