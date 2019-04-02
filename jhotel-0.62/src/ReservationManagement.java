@@ -21,7 +21,7 @@
 **/
 
 
-import observers.ReservationMngObserver;
+import observers.MainObserver;
 
 import java.awt.Frame;
 import javax.swing.table.*;
@@ -54,7 +54,8 @@ public class ReservationManagement extends Frame implements Runnable {
 	private int roomtype;
 	private String room;
 
-	private ArrayList<ReservationMngObserver> observers = new ArrayList<>();
+	private ArrayList<MainObserver> observers = new ArrayList<>();
+
 	private final int ACT_GOTO_MAIN = 1;
 	private final int ACT_SET_VISIBLE = 2;
 
@@ -136,7 +137,7 @@ public class ReservationManagement extends Frame implements Runnable {
 		this.setVisible(true);
 		this.addWindowListener(new java.awt.event.WindowAdapter() { 
 			public void windowClosing(java.awt.event.WindowEvent e) {
-				notifyObserver(ACT_GOTO_MAIN, true);
+				notifyObserver(true);
 				dispose();
 			}
 		});
@@ -1061,19 +1062,14 @@ public class ReservationManagement extends Frame implements Runnable {
 	}
 
 
-	public void addObserver(Object o){
-		observers.add((ReservationMngObserver) o);
+	public void addObserver(MainObserver observer){
+		observers.add(observer);
 	}
 
 
-	public void notifyObserver(int action, boolean b) {
-		for (ReservationMngObserver observer : observers){
-			switch(action){
-				case ACT_GOTO_MAIN:
-					observer.updateMainWindow(b);
-					break;
-
-			}
+	private void notifyObserver(boolean b) {
+		for (MainObserver observer : observers){
+			observer.updateGoBackToMain(b);
 		}
 	}
 }  //  @jve:visual-info  decl-index=0 visual-constraint="10,10"

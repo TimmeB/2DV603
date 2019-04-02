@@ -22,14 +22,13 @@
 
 
 import observers.MainObserver;
-import observers.ReservationMngObserver;
 
 import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.*;
 
-public class MainWindow extends Frame implements ActionListener, MainObserver, ReservationMngObserver {
+public class MainWindow extends Frame implements ActionListener, MainObserver {
 
 	private javax.swing.JLabel jLabel = null;
 	private javax.swing.JButton jButton = null;
@@ -65,6 +64,12 @@ public class MainWindow extends Frame implements ActionListener, MainObserver, R
 	
 	private static String[] language;
 	String file;
+
+	/* Observer Variables */
+	private final String ACTION_DELETE_ENTRY = "DeleteEntry";
+	private final String ACTION_ADW_RESET = "ADWReset";
+	private final String ACTION_SET_GUEST = "SetGuest";
+	private final String ACTION_CLEAR = "Clear";
 	
 	
 	private javax.swing.JTextArea jTextArea1 = null;
@@ -207,7 +212,8 @@ public class MainWindow extends Frame implements ActionListener, MainObserver, R
 		}
 		
 		if (modified) {
-			YesNoDialog zn = new YesNoDialog(thisWindow, tst, language[52], "undoEntry");
+			YesNoDialog zn = new YesNoDialog(tst, language[52], "undoEntry");
+			zn.addObserver(thisWindow);
 			zn.setVisible(true);
 		}
 		else {
@@ -512,7 +518,8 @@ public class MainWindow extends Frame implements ActionListener, MainObserver, R
 					String[] tst = new String[entries];
 					tst = getTempGuest();
 					
-					YesNoDialog yn = new YesNoDialog(thisWindow, tst, language[53], "deleteEntry");
+					YesNoDialog yn = new YesNoDialog(tst, language[53], "deleteEntry");
+					yn.addObserver(thisWindow);
 					yn.setVisible(true);
 					
 					
@@ -553,7 +560,8 @@ public class MainWindow extends Frame implements ActionListener, MainObserver, R
 					}
 					
 					if (modified) {
-						YesNoDialog zn = new YesNoDialog(thisWindow, tst, language[52], "undoEntry");
+						YesNoDialog zn = new YesNoDialog(tst, language[52], "undoEntry");
+						zn.addObserver(thisWindow);
 						zn.setVisible(true);
 					}
 					else {
@@ -1012,8 +1020,9 @@ public class MainWindow extends Frame implements ActionListener, MainObserver, R
 		thisWindow.setEnabled(b);
 	}
 
+
 	@Override
-	public void updateMainWindow(boolean b) {
+	public void updateGoBackToMain(boolean b){
 		setEnabled(b);
 		setVisible(b);
 	}
@@ -1038,8 +1047,28 @@ public class MainWindow extends Frame implements ActionListener, MainObserver, R
 
 	@Override
 	public void updateYesNoDialog(String[] currentGuest, String language, String action){
-		YesNoDialog zn = new YesNoDialog(thisWindow, currentGuest, language, "undoAddEntry");
+		YesNoDialog zn = new YesNoDialog(currentGuest, language, "undoAddEntry");
+		zn.addObserver(thisWindow);
 		zn.setVisible(true);
+	}
+
+	public void updateYesNoDialog(String[] guest, String action){
+		switch (action){
+			case ACTION_DELETE_ENTRY:
+				deleteEntry(guest);
+				break;
+			case ACTION_ADW_RESET:
+				addDataWindowReset(guest);
+				break;
+			case ACTION_SET_GUEST:
+				setGuest(guest);
+				break;
+		}
+	}
+	public void updateYesNoDialog(String action){
+		if (action.equals(ACTION_CLEAR)){
+			clearFields();
+		}
 	}
 
 }  //  @jve:visual-info  decl-index=0 visual-constraint="22,10"

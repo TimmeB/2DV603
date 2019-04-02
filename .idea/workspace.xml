@@ -14,8 +14,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="1038" column="13" selection-start-line="1038" selection-start-column="13" selection-end-line="1038" selection-end-column="13" />
+            <state relative-caret-position="365">
+              <caret line="1025" selection-start-line="1025" selection-end-line="1025" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4918#5049#0" expanded="true" />
@@ -51,29 +51,30 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/ReservationManagement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="1069" column="11" selection-start-line="1069" selection-start-column="11" selection-end-line="1069" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#31211#31212#0" expanded="true" />
+                <element signature="e#31259#31260#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/ActionCommandsMW.java">
+        <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/YesNoDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="45" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/OptionsWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="189" column="25" selection-start-line="189" selection-start-column="25" selection-end-line="189" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/ExportWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+            <state relative-caret-position="270">
+              <caret line="38" column="47" lean-forward="true" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4654#4655#0" expanded="true" />
+                <element signature="e#4669#4670#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/observers/MainObserver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="195">
+              <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -99,8 +100,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>static</find>
-      <find>ObserverTest</find>
       <find>setEnabled</find>
       <find>album.star</find>
       <find>album.</find>
@@ -116,18 +115,21 @@
       <find>rm</find>
       <find>Reser</find>
       <find>RESE</find>
-      <find>addOb</find>
       <find>getTempG</find>
       <find>tst</find>
       <find>Additional</find>
       <find>addDataWindow</find>
       <find>album</find>
       <find>Yes</find>
-      <find>YesNoDialog</find>
       <find>ActionCom</find>
       <find>language</find>
-      <find>mw</find>
       <find>ActionComma</find>
+      <find>mw</find>
+      <find>ReservationMngObserver</find>
+      <find>YesNoDialog</find>
+      <find>addOb</find>
+      <find>noti</find>
+      <find>ReservationMa</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -152,14 +154,14 @@
         <option value="$PROJECT_DIR$/jhotel-0.62/src/Reservation.java" />
         <option value="$PROJECT_DIR$/jhotel-0.62/src/checkinGuestThread.java" />
         <option value="$PROJECT_DIR$/jhotel-0.62/src/observers/ReservationMngObserver.java" />
-        <option value="$PROJECT_DIR$/jhotel-0.62/src/ReservationManagement.java" />
         <option value="$PROJECT_DIR$/jhotel-0.62/src/Album.java" />
-        <option value="$PROJECT_DIR$/jhotel-0.62/src/YesNoDialog.java" />
-        <option value="$PROJECT_DIR$/jhotel-0.62/src/observers/MainObserver.java" />
         <option value="$PROJECT_DIR$/jhotel-0.62/src/OptionsWindow.java" />
         <option value="$PROJECT_DIR$/jhotel-0.62/src/AdditionalDataWindow.java" />
-        <option value="$PROJECT_DIR$/jhotel-0.62/src/MainWindow.java" />
         <option value="$PROJECT_DIR$/jhotel-0.62/src/ActionCommandsMW.java" />
+        <option value="$PROJECT_DIR$/jhotel-0.62/src/YesNoDialog.java" />
+        <option value="$PROJECT_DIR$/jhotel-0.62/src/MainWindow.java" />
+        <option value="$PROJECT_DIR$/jhotel-0.62/src/observers/MainObserver.java" />
+        <option value="$PROJECT_DIR$/jhotel-0.62/src/ReservationManagement.java" />
       </list>
     </option>
   </component>
@@ -204,7 +206,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554219762727" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554223429020" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -259,7 +261,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26911000" />
+    <option name="totallyTimeSpent" value="30609000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -383,24 +385,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/observers/Observable.java" />
-    <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/observers/ReservationMngObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/ReservationManagement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
-          <folding>
-            <element signature="e#31295#31296#0" expanded="true" />
-            <element signature="e#31310#31311#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/AlbumWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7660">
@@ -409,13 +393,6 @@
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/YesNoDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
         </state>
       </provider>
     </entry>
@@ -443,17 +420,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/ActionCommandsMW.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="34" column="38" lean-forward="true" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/observers/MainObserver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="195">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/ReservationManagement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="1069" column="11" selection-start-line="1069" selection-start-column="11" selection-end-line="1069" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#31211#31212#0" expanded="true" />
+            <element signature="e#31259#31260#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="1038" column="13" selection-start-line="1038" selection-start-column="13" selection-end-line="1038" selection-end-column="13" />
+        <state relative-caret-position="365">
+          <caret line="1025" selection-start-line="1025" selection-end-line="1025" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4918#5049#0" expanded="true" />
@@ -488,10 +484,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/ActionCommandsMW.java">
+    <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/observers/ReservationMngObserver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="45" selection-end-column="9" />
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jhotel-0.62/src/YesNoDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="38" column="47" lean-forward="true" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4654#4655#0" expanded="true" />
+            <element signature="e#4669#4670#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

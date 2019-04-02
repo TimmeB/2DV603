@@ -21,13 +21,24 @@
 **/
 
 
+import observers.MainObserver;
+
 import java.awt.Frame;
+import java.util.ArrayList;
 
 public class YesNoDialog extends Frame {
 
+	/* Observer variables */
+	private ArrayList<MainObserver> observers = new ArrayList<>();
+	private final String ACTION_DELETE_ENTRY = "DeleteEntry";
+	private final String ACTION_ADW_RESET = "ADWReset";
+	private final String ACTION_SET_GUEST = "SetGuest";
+	private final String ACTION_CLEAR = "Clear";
+
+
 	private javax.swing.JButton jButton = null;
 	private javax.swing.JButton jButton1 = null;
-	MainWindow mw;
+//	MainWindow mw;
 	SearchWindow sw;
 	ReservationManagement rm;
 	ShowReservationWindow srw;
@@ -40,14 +51,13 @@ public class YesNoDialog extends Frame {
 	/**
 	 * This is the default constructor
 	 */
-	public YesNoDialog(MainWindow mw, String[] guest, String text, String action) {
+	public YesNoDialog(String[] guest, String text, String action) {
 		Language lang = new Language();
 		language = lang.getLanguage();
-		this.mw = mw;
+//		this.mw = mw;
 		this.guest = guest;
 		this.action = action;
 		this.text = text;
-		
 		initialize();
 	}
 	
@@ -103,13 +113,16 @@ public class YesNoDialog extends Frame {
 			jButton.addActionListener(new java.awt.event.ActionListener() { 
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					if (action.equals("deleteEntry")) {
-						mw.deleteEntry(guest);
+//						mw.deleteEntry(guest);
+						notifyObserver(ACTION_DELETE_ENTRY);
 					}
 					else if (action.equals("undoEntry")) {
-						mw.clearFields();
+//						mw.clearFields();
+						notifyObserver(ACTION_CLEAR);
 					}
 					else if (action.equals("undoAddEntry")) {
-						mw.addDataWindowReset(guest);
+//						mw.addDataWindowReset(guest);
+						notifyObserver(ACTION_ADW_RESET);
 					}
 					else if (action.equals("deleteRes")) {
 						srw.dispose();
@@ -141,7 +154,8 @@ public class YesNoDialog extends Frame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {    
 					//mw.setGuest(guest);
 					if (action.equals("undoEntry")) {
-						mw.setGuest(guest);
+//						mw.setGuest(guest);
+						notifyObserver(ACTION_SET_GUEST);
 					}
 					
 					
@@ -175,5 +189,19 @@ public class YesNoDialog extends Frame {
 			jTextArea.setWrapStyleWord(true);
 		}
 		return jTextArea;
+	}
+
+	public void addObserver(MainObserver observer) {
+		observers.add(observer);
+	}
+	private void notifyObserver(String action){
+		for (MainObserver observer : observers){
+			if (action.equals(ACTION_CLEAR)){
+				observer.updateYesNoDialog(ACTION_CLEAR);
+			}
+			else {
+				observer.updateYesNoDialog(guest, action);
+			}
+		}
 	}
 }  //  @jve:visual-info  decl-index=0 visual-constraint="10,10"
