@@ -937,8 +937,9 @@ public class MainWindow extends Frame implements ActionListener, MainObserver, R
 		
 		
 		
-		AdditionalDataWindow adw = new AdditionalDataWindow(g, thisWindow, entries);
+		AdditionalDataWindow adw = new AdditionalDataWindow(g, entries);
 		addDataWindow = adw;
+		addDataWindow.addObserver(thisWindow);
 		adw.setVisible(false);
 		
 		
@@ -1003,6 +1004,29 @@ public class MainWindow extends Frame implements ActionListener, MainObserver, R
 	public void updateMainWindow(boolean b) {
 		setEnabled(b);
 		setVisible(b);
+	}
+
+	@Override
+	public void updateTempGuestData(){
+		String[] tst = new String[7];
+		tst[0] = getCompany();
+		tst[1] = getName();
+		tst[2] = getFirstName();
+		tst[3] = getAddress(false);
+		tst[4] = getBirthday();
+		tst[5] = getCitizenship();
+		tst[6] = getAddress(true);
+		addDataWindow.setTempGuestData(tst);
+	}
+	@Override
+	public void updateTempGuest(String[] tmpGuest){
+		System.out.println("Setguest MAINWINDOW");
+		setGuest(tmpGuest);
+	}
+
+	public void updateYesNoDialog(String[] currentGuest, String language, String action){
+		YesNoDialog zn = new YesNoDialog(thisWindow, currentGuest, language, "undoAddEntry");
+		zn.setVisible(true);
 	}
 
 }  //  @jve:visual-info  decl-index=0 visual-constraint="22,10"

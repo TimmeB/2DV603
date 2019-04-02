@@ -101,7 +101,7 @@ public class YesNoDialog extends Frame {
 			jButton.setBounds(158, 118, 116, 26);
 			jButton.setText(language[15]);
 			jButton.addActionListener(new java.awt.event.ActionListener() { 
-				public void actionPerformed(java.awt.event.ActionEvent e) {    
+				public void actionPerformed(java.awt.event.ActionEvent e) {
 					if (action.equals("deleteEntry")) {
 						mw.deleteEntry(guest);
 					}

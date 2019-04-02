@@ -21,7 +21,10 @@
 **/
 
 
+import observers.MainObserver;
+
 import java.awt.Frame;
+import java.util.ArrayList;
 
 public class AdditionalDataWindow extends Frame {
 
@@ -49,8 +52,8 @@ public class AdditionalDataWindow extends Frame {
 	private javax.swing.JLabel jLabel8 = null;
 	private javax.swing.JRadioButton jRadioButton2 = null;
 	private javax.swing.JRadioButton jRadioButton3 = null;
+	private ArrayList<MainObserver> observers = new ArrayList<>();
 	public static boolean smoker = false;
-	MainWindow mw;
 	Guest guest;
 	int entries;
 	public String[] currentGuest;
@@ -58,19 +61,19 @@ public class AdditionalDataWindow extends Frame {
 	private javax.swing.JButton jButton2 = null;
 	public static AdditionalDataWindow thisWindow;
 	String[] language;
+	private String[] tempGuestData;
 	
 	
 	/**
 	 * This is the default constructor
 	 */
-	public AdditionalDataWindow(Guest guest, MainWindow mw, int entries) {
+	public AdditionalDataWindow(Guest guest, int entries) {
 		Language lang = new Language();
 		language = lang.getLanguage();
 		
 		
 		this.guest = guest;
 		this.entries = entries;
-		this.mw = mw;
 		initialize();
 		
 
@@ -634,8 +637,9 @@ public class AdditionalDataWindow extends Frame {
 					}
 					
 					if (modified) {
-						YesNoDialog zn = new YesNoDialog(mw, currentGuest, language[52], "undoAddEntry");
-						zn.setVisible(true);
+//						YesNoDialog zn = new YesNoDialog(mw, currentGuest, language[52], "undoAddEntry");
+						notifyYesNoDialog(currentGuest, language[52], "undoAddEntry");
+//						zn.setVisible(true);
 					}
 					else {
 						setVisible(false);
@@ -652,19 +656,17 @@ public class AdditionalDataWindow extends Frame {
 	}
 	
 	public void reset(String[] tmpGuest) {
-		mw.setGuest(tmpGuest);
+		notifyObserver("ACTION_SET_GUEST", tmpGuest);
 		setVisible(false);
 	}
 
 	public String[] getTempGuest() {
 		String[] tst = new String[entries];
-		tst[0] = mw.getCompany();
-		tst[1] = mw.getName();
-		tst[2] = mw.getFirstName();
-		tst[3] = mw.getAddress(false);
-		tst[4] = mw.getBirthday();
-		tst[5] = mw.getCitizenship();
-		tst[6] = mw.getAddress(true);
+		notifyObserver("ACTION_GUESTDATA", null);
+		for (int i = 0; i < tempGuestData.length; i++){
+			tst[i] = tempGuestData[i];
+		}
+
 		tst[7] = getWife();
 		tst[8] = getChildren();
 		tst[9] = getPhone(false);
@@ -706,5 +708,28 @@ public class AdditionalDataWindow extends Frame {
 			});
 		}
 		return jButton2;
+	}
+
+	public void setTempGuestData(String[] newData){
+		tempGuestData = newData;
+	}
+
+	public void addObserver(MainObserver observer){
+		observers.add(observer);
+	}
+	private void notifyObserver(String action, String[] guestData){
+		for (MainObserver observer : observers){
+			switch (action){
+				case "ACTION_GUESTDATA":
+					observer.updateTempGuestData();
+					break;
+				case "ACTION_SET_GUEST":
+					observer.updateTempGuest(guestData);
+					break;
+			}
+		}
+	}
+	private void notifyYesNoDialog(String[] currentGuest, String language, String action){
+
 	}
 }  //  @jve:visual-info  decl-index=0 visual-constraint="10,10"
