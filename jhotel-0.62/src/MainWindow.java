@@ -21,12 +21,14 @@
 **/
 
 
+import observers.MainObserver;
+
 import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.*;
 
-public class MainWindow extends Frame implements ActionListener {
+public class MainWindow extends Frame implements ActionListener, MainObserver {
 
 	private javax.swing.JLabel jLabel = null;
 	private javax.swing.JButton jButton = null;
@@ -919,8 +921,9 @@ public class MainWindow extends Frame implements ActionListener {
 		entries = g.getEntries();
 		MainWindow window = new MainWindow();
 		thisWindow = window;
-		SearchWindow sw = new SearchWindow(thisWindow);
+		SearchWindow sw = new SearchWindow();
 		searchWindow = sw;
+		searchWindow.addObserver(thisWindow);
 		
 		sw.setVisible(false);
 		thisWindow.setGuestStatus(false);
@@ -955,7 +958,8 @@ public class MainWindow extends Frame implements ActionListener {
 			jButton9.setFont(new java.awt.Font("Dialog", java.awt.Font.PLAIN, 10));
 			jButton9.addActionListener(new java.awt.event.ActionListener() { 
 				public void actionPerformed(java.awt.event.ActionEvent e) {    
-					GuestList gl = new GuestList(thisWindow);
+					GuestList gl = new GuestList();
+					gl.addObserver(thisWindow);
 					gl.setVisible(true);
 					gl.getGuestDB();
 				}
@@ -976,5 +980,20 @@ public class MainWindow extends Frame implements ActionListener {
 			jButton10.setText("Fremdenbuch");
 		}
 		return jButton10;
+	}
+
+	@Override
+	public void updateLoadGuest(String[] entry){
+		setGuestStatus(true);
+		setVisible(true);
+		setEnabled(true);
+		setGuest(entry);
+		setCurrentGuest();
+		setDeleted(true);
+	}
+
+	@Override
+	public void updateSetEnable(boolean b){
+		thisWindow.setEnabled(b);
 	}
 }  //  @jve:visual-info  decl-index=0 visual-constraint="22,10"

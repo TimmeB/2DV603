@@ -21,6 +21,8 @@
 **/
 
 
+import observers.MainObserver;
+
 import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
@@ -36,9 +38,9 @@ public class SearchWindow extends Frame {
 	private javax.swing.JLabel jLabel2 = null;
 	private javax.swing.JButton jButton1 = null;
 	private javax.swing.JButton jButton3 = null;
-	public MainWindow mw;
 	private javax.swing.JScrollPane jScrollPane = null;
 	private javax.swing.JList jList = null;
+	private ArrayList<MainObserver> observers = new ArrayList<>();
 	ArrayList data = new ArrayList();
 	ArrayList db = new ArrayList();
 	ArrayList sr = new ArrayList();
@@ -46,8 +48,7 @@ public class SearchWindow extends Frame {
 	String dbname;
 	int entries;
 	
-	public SearchWindow(MainWindow window) throws HeadlessException {
-		this.mw = window;
+	public SearchWindow() throws HeadlessException {
 		Language lang = new Language();
 		language = lang.getLanguage();
 		Options options = new Options();
@@ -106,7 +107,7 @@ public class SearchWindow extends Frame {
 				jList.setModel(new DefaultListModel());
 				clearFields();
 				setVisible(false);
-				mw.setEnabled(true);
+				notifyObserver(true);
         	}
         });
 			
@@ -168,12 +169,14 @@ public class SearchWindow extends Frame {
 
 				entry = guest.getGuest(gst);
 					
-				mw.setGuestStatus(true);
-				mw.setVisible(true);
-				mw.setEnabled(true);
-				mw.setGuest(entry);
-				mw.setCurrentGuest();
-				mw.setDeleted(true);
+//				mw.setGuestStatus(true);
+//				mw.setVisible(true);
+//				mw.setEnabled(true);
+//				mw.setGuest(entry);
+//				mw.setCurrentGuest();
+//				mw.setDeleted(true);
+				notifyObserver(entry);
+
 				clearFields();
 				setVisible(false);
 	
@@ -270,12 +273,12 @@ public class SearchWindow extends Frame {
 			jButton1.setText(language[41]);
 			jButton1.setVisible(true);
 			jButton1.addActionListener(new java.awt.event.ActionListener() { 
-				public void actionPerformed(java.awt.event.ActionEvent e) {    
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("YAH");
 					jList.setModel(new DefaultListModel());
 					clearFields();
 					setVisible(false);
-					mw.setEnabled(true);
-					
+					notifyObserver(true);
 
 				}
 			});
@@ -320,12 +323,14 @@ public class SearchWindow extends Frame {
 		
 		entry = guest.getGuest((String[]) sr.get(index));
 					
-		mw.setGuestStatus(true);
-		mw.setVisible(true);
-		mw.setEnabled(true);
-		mw.setGuest(entry);
-		mw.setCurrentGuest();
-		mw.setDeleted(true);
+//		mw.setGuestStatus(true);
+//		mw.setVisible(true);
+//		mw.setEnabled(true);
+//		mw.setGuest(entry);
+//		mw.setCurrentGuest();
+//		mw.setDeleted(true);
+		notifyObserver(entry);
+
 		clearFields();
 		setVisible(false);
 
@@ -352,4 +357,20 @@ public class SearchWindow extends Frame {
 		}
 		return jList;
 	}
+
+	public void addObserver(MainObserver observer){
+		observers.add(observer);
+	}
+
+	private void notifyObserver(String[] entry){
+		for (MainObserver observer : observers){
+			observer.updateLoadGuest(entry);
+		}
+	}
+	private void notifyObserver(boolean b){
+		for (MainObserver observer : observers){
+			observer.updateSetEnable(b);
+		}
+	}
+
 }  //  @jve:visual-info  decl-index=0 visual-constraint="10,10"
