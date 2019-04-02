@@ -21,14 +21,12 @@
 **/
 
 
-import observers.Observable;
 import observers.ReservationMngObserver;
 
 import java.awt.Frame;
 import javax.swing.table.*;
 import java.util.*;
 import java.io.*;
-import java.awt.Color;
 
 public class ReservationManagement extends Frame implements Runnable {
 
